@@ -1,0 +1,172 @@
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const resendApiKey = process.env.RESEND_API_KEY;
+const resendFrom = process.env.RESEND_FROM || "Kartik Guleria <kartik@railquick.in>";
+
+function sendJson(statusCode, payload) {
+  return {
+    statusCode,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify(payload)
+  };
+}
+
+function isEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+async function supabaseRequest(path, options = {}) {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error("Supabase is not configured on the server.");
+  }
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/${path}`, {
+    ...options,
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+      ...(options.headers || {})
+    }
+  });
+
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+
+  return { response, data };
+}
+
+async function emailAlreadyExists(email) {
+  const path = `waitlist?email=eq.${encodeURIComponent(email)}&select=email&limit=1`;
+  const { response, data } = await supabaseRequest(path, {
+    method: "GET",
+    headers: { Prefer: "" }
+  });
+
+  if (!response.ok) { return false; }
+  return Array.isArray(data) && data.length > 0;
+}
+
+async function addToWaitlist(email, city) {
+  if (await emailAlreadyExists(email)) {
+    return { inserted: false };
+  }
+
+  // First try inserting with both email and city
+  let { response, data } = await supabaseRequest("waitlist", {
+    method: "POST",
+    body: JSON.stringify({ email, city })
+  });
+
+  if (response.ok) {
+    return { inserted: true, data };
+  }
+
+  // Fallback: If city column is missing (PGRST204) or bad request status, insert email only
+  if (response.status === 400 || data?.code === "PGRST204") {
+    console.warn("City column not found in schema, falling back to email-only insert.");
+    const retry = await supabaseRequest("waitlist", {
+      method: "POST",
+      body: JSON.stringify({ email })
+    });
+    if (retry.response.ok) {
+      return { inserted: true, data: retry.data };
+    }
+    if (retry.data?.code === "23505") {
+      return { inserted: false };
+    }
+    throw new Error(retry.data?.message || "Could not add email to waitlist.");
+  }
+
+  if (data?.code === "23505") {
+    return { inserted: false };
+  }
+
+  throw new Error(data?.message || "Could not add this email to the waitlist.");
+}
+
+async function sendWelcomeEmail(email) {
+  if (!resendApiKey) return;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from: resendFrom,
+      to: email,
+      subject: "Welcome to RailQuick",
+      text: `Hello,
+
+Thank you for joining the RailQuick waitlist.
+
+We have successfully received your request and added your email to our early access list.
+
+RailQuick is building a simpler way for train passengers to get essential items delivered directly during their journey.
+
+As we move closer to launch, we'll share important updates, early access invitations, and availability information for your city.
+
+Thank you for your interest in RailQuick.
+
+Regards,
+Kartik Guleria
+Founder & CEO
+RailQuick`
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(error || "Could not send welcome email.");
+  }
+}
+
+export async function handler(event, context) {
+  if (event.httpMethod !== "POST") {
+    return sendJson(405, { message: "Method not allowed" });
+  }
+
+  let email = "";
+  let city = "";
+
+  try {
+    const body = JSON.parse(event.body || "{}");
+    email = String(body.email || "").trim().toLowerCase();
+    city = String(body.city || "").trim();
+
+    if (!isEmail(email) || !city) {
+      return sendJson(400, { message: "Please enter a valid email and city." });
+    }
+
+    let waitlist = await addToWaitlist(email, city);
+
+    if (!waitlist.inserted) {
+      try {
+        await sendWelcomeEmail(email);
+      } catch {}
+      return sendJson(200, {
+        message: "You are already on the RailQuick waitlist. We sent another welcome email!"
+      });
+    }
+
+    try {
+      await sendWelcomeEmail(email);
+    } catch (emailError) {
+      console.warn("Welcome email failed to send:", emailError.message);
+    }
+
+    return sendJson(201, {
+      message: "You are on the RailQuick waitlist. Please check your email for the welcome note."
+    });
+  } catch (error) {
+    console.error("Waitlist Netlify Function Error:", error);
+    return sendJson(500, {
+      message: error.message || "Something went wrong. Please try again."
+    });
+  }
+}
