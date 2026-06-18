@@ -1,361 +1,242 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="RailQuick is launching soon — essential items delivered to your train seat. Join the waitlist for early access." />
-    <meta name="theme-color" content="#ffffff" />
-    <title>RailQuick • Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RailQuick is launching soon — essential items delivered to your train seat. Join the waitlist for early access." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>RailQuick — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400;1,9..40,500;1,9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
 
-    <!-- Decorative background blobs -->
-    <div class="bg-blobs" aria-hidden="true">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
+  <!-- =================== NAV =================== -->
+  <header class="nav">
+    <a href="/" class="nav-brand">
+      <img src="/railquick-logo.png" alt="RailQuick" class="nav-logo" />
+    </a>
+    <div class="nav-actions">
+      <button class="btn-play" type="button" data-open-app-modal aria-label="Google Play – coming soon">
+        <!-- Real Google Play colourful icon -->
+        <svg class="play-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="pa" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#00a650"/></linearGradient>
+            <linearGradient id="pb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffd600"/><stop offset="100%" stop-color="#ff8c00"/></linearGradient>
+            <linearGradient id="pc" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff0066"/><stop offset="100%" stop-color="#ff6d00"/></linearGradient>
+            <linearGradient id="pd" x1="100%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#0070e0"/></linearGradient>
+          </defs>
+          <path d="M4 41.5V6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pa)"/>
+          <path d="M33.6 20.4 25 15.9 10.2 30.7l14.8 8.9 8.6-5.2a3.3 3.3 0 0 0 0-14z" fill="url(#pb)"/>
+          <path d="M7.7 43.4C6.2 44.5 4 43.4 4 41.5l6.2-10.8 14.8 8.9z" fill="url(#pc)"/>
+          <path d="M4 6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pd)" opacity=".55"/>
+        </svg>
+        <span>Google Play</span>
+      </button>
+      <a class="btn-join" href="#waitlistForm">Join Waitlist</a>
     </div>
+  </header>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" aria-label="RailQuick">
-      <img class="nav-logo" src="/railquick-logo.png" alt="RailQuick" width="160" height="auto" />
-      <div class="nav-right">
-        <a class="nav-cta" href="#waitlistForm">🔔 Join Waitlist</a>
-      </div>
-    </nav>
+  <!-- =================== PAGE =================== -->
+  <main class="page">
 
-    <!-- ===== MAIN ===== -->
-    <main>
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
 
-      <!-- === HERO SPLIT === -->
-      <section class="hero" id="top">
-        <!-- LEFT -->
-        <div class="hero-content">
+      <p class="eyebrow">Coming Soon</p>
 
-          <!-- Coming Soon pill -->
-          <div class="cs-pill">
-            <span class="cs-dot"></span>
-            <span>Coming Soon</span>
-          </div>
+      <h1 class="headline">
+        From Station<br/>
+        <span class="headline-italic">to Your</span> Seat.
+      </h1>
 
-          <!-- Headline -->
-          <h1 class="hero-h1">
-            From Station<br/>
-            <span class="h1-green">to Your</span> Seat.
-          </h1>
+      <p class="subline">
+        Essentials delivered right to your train berth — chargers, medicines,
+        hygiene kits, baby care &amp; more. While you travel, we deliver.
+      </p>
 
-          <!-- Subheadline -->
-          <p class="hero-p">
-            Essentials delivered <strong>right to your train berth</strong> — chargers, medicines, hygiene kits, baby care &amp; more. While you travel, we deliver.
-          </p>
-
-          <!-- Essentials chips -->
-          <div class="chip-row" aria-label="What we deliver">
-            <span class="chip">⚡ Chargers</span>
-            <span class="chip">💊 Medicines</span>
-            <span class="chip">🧴 Hygiene Kits</span>
-            <span class="chip">👶 Baby Care</span>
-            <span class="chip">🍫 Snacks</span>
-            <span class="chip">💧 Water</span>
-          </div>
-
-          <!-- Countdown -->
-          <div class="countdown-box" aria-label="Launch countdown">
-            <p class="cd-label">🚂&nbsp; Launch countdown</p>
-            <div class="cd-row" id="countdown">
-              <div class="cd-unit">
-                <span class="cd-num" id="cd-days">00</span>
-                <span class="cd-lbl">Days</span>
-              </div>
-              <span class="cd-colon">:</span>
-              <div class="cd-unit">
-                <span class="cd-num" id="cd-hours">00</span>
-                <span class="cd-lbl">Hours</span>
-              </div>
-              <span class="cd-colon">:</span>
-              <div class="cd-unit">
-                <span class="cd-num" id="cd-mins">00</span>
-                <span class="cd-lbl">Mins</span>
-              </div>
-              <span class="cd-colon">:</span>
-              <div class="cd-unit">
-                <span class="cd-num" id="cd-secs">00</span>
-                <span class="cd-lbl">Secs</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Progress roadmap -->
-          <div class="roadmap" aria-label="Launch roadmap">
-            <div class="rm-step rm-done">
-              <div class="rm-dot rm-dot-done">✓</div>
-              <div class="rm-info">
-                <span class="rm-title">Waitlist Live</span>
-                <span class="rm-sub">Join now — it's free</span>
-              </div>
-            </div>
-            <div class="rm-line rm-line-active"></div>
-            <div class="rm-step rm-active">
-              <div class="rm-dot rm-dot-active">
-                <span class="rm-pulse"></span>
-              </div>
-              <div class="rm-info">
-                <span class="rm-title">App in Development</span>
-                <span class="rm-sub">Android &amp; iOS coming</span>
-              </div>
-            </div>
-            <div class="rm-line rm-line-dim"></div>
-            <div class="rm-step rm-future">
-              <div class="rm-dot rm-dot-future">3</div>
-              <div class="rm-info">
-                <span class="rm-title">City Launches</span>
-                <span class="rm-sub">City by city rollout</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Play Store badge (desktop only) -->
-          <div class="store-badges desktop-only">
-            <button class="gplay-badge" type="button" data-open-app-modal aria-label="Google Play — coming soon">
-              <!-- Official Google Play icon SVG -->
-              <svg class="gplay-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M48 432c0 23.3 25.1 37 44.9 24.8l288-176a29 29 0 0 0 0-49.6l-288-176C73.1 43 48 56.7 48 80v352z" fill="url(#gp-grad)"/>
-                <defs>
-                  <linearGradient id="gp-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#00d2ff"/>
-                    <stop offset="30%" stop-color="#3ac8a0"/>
-                    <stop offset="60%" stop-color="#f9c62c"/>
-                    <stop offset="100%" stop-color="#ff4040"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="gplay-text">
-                <span class="gplay-sub">Coming soon on</span>
-                <span class="gplay-main">Google Play</span>
-              </div>
-            </button>
-          </div>
-
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">People on waitlist</span>
         </div>
-
-        <!-- RIGHT — Form -->
-        <div class="hero-form-wrap" id="waitlistForm-wrapper">
-          <form class="wl-card" id="waitlistForm" novalidate>
-
-            <!-- Top stripe -->
-            <div class="wl-stripe" aria-hidden="true"></div>
-
-            <div class="wl-head">
-              <div class="wl-badge">🎟️ Early Access</div>
-              <h2 class="wl-h2">Reserve your spot</h2>
-              <p class="wl-sub">Be first when RailQuick launches in your city.</p>
-            </div>
-
-            <!-- Social proof -->
-            <div class="wl-proof">
-              <div class="av-stack">
-                <span class="av" style="background:#34d399">K</span>
-                <span class="av" style="background:#fb923c">R</span>
-                <span class="av" style="background:#60a5fa">A</span>
-                <span class="av" style="background:#f472b6">S</span>
-                <span class="av" style="background:#a78bfa">T</span>
-              </div>
-              <div class="proof-words">
-                <span class="proof-num">1,200+</span>
-                <span class="proof-txt"> people already joined</span>
-              </div>
-            </div>
-
-            <!-- Email -->
-            <div class="wl-field">
-              <label for="email">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-                Email address
-              </label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-            </div>
-
-            <!-- City -->
-            <div class="wl-field">
-              <label for="city">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s-8-5.5-8-12a8 8 0 0 1 16 0c0 6.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
-                Your city
-              </label>
-              <input id="city" name="city" type="text" placeholder="Mumbai, Delhi, Bangalore…" autocomplete="address-level2" required />
-            </div>
-
-            <button type="submit" id="submitButton">
-              <span id="btn-label">Notify Me When We Launch</span>
-              <svg class="btn-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-
-            <p class="status" id="formStatus" role="status" aria-live="polite"></p>
-
-            <p class="wl-privacy">🔒 No spam ever. Unsubscribe any time.</p>
-
-            <!-- Play Store badge (inside card, mobile friendly) -->
-            <div class="store-badges mobile-store">
-              <button class="gplay-badge" type="button" data-open-app-modal aria-label="Google Play — coming soon">
-                <svg class="gplay-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M48 432c0 23.3 25.1 37 44.9 24.8l288-176a29 29 0 0 0 0-49.6l-288-176C73.1 43 48 56.7 48 80v352z" fill="url(#gp-grad2)"/>
-                  <defs>
-                    <linearGradient id="gp-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#00d2ff"/>
-                      <stop offset="30%" stop-color="#3ac8a0"/>
-                      <stop offset="60%" stop-color="#f9c62c"/>
-                      <stop offset="100%" stop-color="#ff4040"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div class="gplay-text">
-                  <span class="gplay-sub">Coming soon on</span>
-                  <span class="gplay-main">Google Play</span>
-                </div>
-              </button>
-            </div>
-
-          </form>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Cities launching first</span>
         </div>
-      </section>
-
-      <!-- === HOW IT WORKS === -->
-      <section class="how-section">
-        <p class="section-label">🛤️ How it works</p>
-        <h2 class="section-h2">Delivery in 3 simple steps</h2>
-        <div class="how-grid">
-          <div class="how-card">
-            <div class="how-num">1</div>
-            <div class="how-emoji">📱</div>
-            <h3>Order on journey</h3>
-            <p>Open the app, find your train &amp; place an order for what you need.</p>
-          </div>
-          <div class="how-arrow">→</div>
-          <div class="how-card">
-            <div class="how-num">2</div>
-            <div class="how-emoji">🚉</div>
-            <h3>We reach your coach</h3>
-            <p>Our delivery partner meets your train at the next stop on your route.</p>
-          </div>
-          <div class="how-arrow">→</div>
-          <div class="how-card">
-            <div class="how-num">3</div>
-            <div class="how-emoji">💺</div>
-            <h3>Delivered to your seat</h3>
-            <p>Essentials arrive right at your berth. No getting up, no hassle.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- === PRODUCTS MARQUEE === -->
-      <section class="marquee-section" aria-label="What we deliver">
-        <div class="marquee-track">
-          <div class="marquee-inner">
-            <span>⚡ Phone Chargers</span>
-            <span class="m-dot">·</span>
-            <span>💊 Medicines</span>
-            <span class="m-dot">·</span>
-            <span>🧴 Hygiene Kits</span>
-            <span class="m-dot">·</span>
-            <span>👶 Baby Care</span>
-            <span class="m-dot">·</span>
-            <span>🍫 Snacks</span>
-            <span class="m-dot">·</span>
-            <span>💧 Water Bottles</span>
-            <span class="m-dot">·</span>
-            <span>📱 Travel Accessories</span>
-            <span class="m-dot">·</span>
-            <span>🩺 First Aid</span>
-            <span class="m-dot">·</span>
-            <!-- duplicate for seamless loop -->
-            <span>⚡ Phone Chargers</span>
-            <span class="m-dot">·</span>
-            <span>💊 Medicines</span>
-            <span class="m-dot">·</span>
-            <span>🧴 Hygiene Kits</span>
-            <span class="m-dot">·</span>
-            <span>👶 Baby Care</span>
-            <span class="m-dot">·</span>
-            <span>🍫 Snacks</span>
-            <span class="m-dot">·</span>
-            <span>💧 Water Bottles</span>
-            <span class="m-dot">·</span>
-            <span>📱 Travel Accessories</span>
-            <span class="m-dot">·</span>
-            <span>🩺 First Aid</span>
-            <span class="m-dot">·</span>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-left">
-          <img src="/railquick-logo.png" alt="RailQuick" class="footer-logo" />
-          <p class="footer-tagline">Essential train journey deliveries — coming to a platform near you.</p>
-        </div>
-        <div class="footer-right">
-          <a href="https://railquick.in" target="_blank" rel="noreferrer" class="footer-site">🌐 railquick.in</a>
-          <p class="footer-copy">© 2025 RailQuick. Made with ❤️ for Indian travellers.</p>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-num">2025</span>
+          <span class="stat-label">Launch year</span>
         </div>
       </div>
-    </footer>
 
-    <!-- ===== SUCCESS MODAL ===== -->
-    <div class="modal-wrap" id="successModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="succ-title">
-      <div class="modal-bg" data-close-modal></div>
-      <div class="modal-card">
-        <button class="modal-x" type="button" data-close-modal aria-label="Close">✕</button>
-        <div class="modal-emoji" aria-hidden="true">🎉</div>
-        <p class="modal-tag">You're on the list!</p>
-        <h2 id="succ-title" class="modal-h2">Welcome to RailQuick!</h2>
-        <p class="modal-p">
-          You've secured early access. We'll email you the moment RailQuick launches in your city. Keep an eye on your inbox!
-        </p>
-        <div class="modal-btns">
-          <a class="mbtn mbtn-primary" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in →</a>
-          <button class="mbtn mbtn-ghost" type="button" data-close-modal>Stay here</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== APP MODAL ===== -->
-    <div class="modal-wrap" id="appModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="app-title">
-      <div class="modal-bg" data-close-app-modal></div>
-      <div class="modal-card">
-        <button class="modal-x" type="button" data-close-app-modal aria-label="Close">✕</button>
-        <div class="modal-emoji" aria-hidden="true">
-          <!-- Official Google Play style icon -->
-          <svg viewBox="0 0 48 48" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.4 44c0 2.2 2.4 3.5 4.3 2.4L40 28a2.8 2.8 0 0 0 0-8L8.7 1.6C6.8.5 4.4 1.8 4.4 4v40z" fill="url(#gp3)"/>
+      <!-- Google Play badge -->
+      <button class="play-badge" type="button" data-open-app-modal aria-label="Google Play – coming soon">
+        <div class="play-badge-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <defs>
-              <linearGradient id="gp3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00d2ff"/>
-                <stop offset="35%" stop-color="#3ac8a0"/>
-                <stop offset="65%" stop-color="#f9c62c"/>
-                <stop offset="100%" stop-color="#ff4040"/>
-              </linearGradient>
+              <linearGradient id="pb2-a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#00a650"/></linearGradient>
+              <linearGradient id="pb2-b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffd600"/><stop offset="100%" stop-color="#ff8c00"/></linearGradient>
+              <linearGradient id="pb2-c" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff0066"/><stop offset="100%" stop-color="#ff6d00"/></linearGradient>
+              <linearGradient id="pb2-d" x1="100%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#0070e0"/></linearGradient>
             </defs>
+            <path d="M4 41.5V6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pb2-a)"/>
+            <path d="M33.6 20.4 25 15.9 10.2 30.7l14.8 8.9 8.6-5.2a3.3 3.3 0 0 0 0-14z" fill="url(#pb2-b)"/>
+            <path d="M7.7 43.4C6.2 44.5 4 43.4 4 41.5l6.2-10.8 14.8 8.9z" fill="url(#pb2-c)"/>
+            <path d="M4 6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pb2-d)" opacity=".55"/>
           </svg>
         </div>
-        <p class="modal-tag">Coming soon</p>
-        <h2 id="app-title" class="modal-h2">RailQuick on Google Play</h2>
-        <p class="modal-p">
-          The app is in development! Join the waitlist and you'll be the very first to know when it launches on Play Store.
-        </p>
-        <div class="modal-btns">
-          <a class="mbtn mbtn-primary" href="#waitlistForm" data-close-app-modal>Join Waitlist →</a>
-          <button class="mbtn mbtn-ghost" type="button" data-close-app-modal>Maybe later</button>
+        <div class="play-badge-text">
+          <span class="play-small">Coming soon on</span>
+          <span class="play-large">Google Play</span>
         </div>
-      </div>
+      </button>
+
     </div>
 
-    <script src="/app.js"></script>
-  </body>
+    <!-- RIGHT COLUMN — Form -->
+    <div class="col-right" id="form-anchor">
+      <form class="form-card" id="waitlistForm" novalidate>
+
+        <div class="form-top-bar" aria-hidden="true"></div>
+
+        <div class="form-header">
+          <p class="form-tag">Early Access</p>
+          <h2 class="form-h2">Reserve your spot</h2>
+          <p class="form-desc">Be among the first when RailQuick launches in your city.</p>
+        </div>
+
+        <!-- Proof -->
+        <div class="proof-bar">
+          <div class="avatars">
+            <span class="av" style="background:#34d399;color:#064e3b">K</span>
+            <span class="av" style="background:#f97316;color:#fff">R</span>
+            <span class="av" style="background:#818cf8;color:#fff">A</span>
+            <span class="av" style="background:#f472b6;color:#fff">S</span>
+            <span class="av" style="background:#facc15;color:#78350f">T</span>
+          </div>
+          <p class="proof-text"><strong>500+</strong> people already joined</p>
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+
+        <!-- City -->
+        <div class="field">
+          <label for="city">Your city</label>
+          <input id="city" name="city" type="text" placeholder="Mumbai, Delhi, Bangalore…" autocomplete="address-level2" required />
+        </div>
+
+        <button type="submit" id="submitButton">
+          <span id="btn-label">Notify Me at Launch</span>
+          <svg class="btn-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+        <p class="form-note">No spam. Unsubscribe any time. We respect your privacy.</p>
+
+        <!-- Play badge inside form — shows on mobile -->
+        <div class="form-play-wrap mobile-only">
+          <button class="play-badge play-badge-sm" type="button" data-open-app-modal>
+            <div class="play-badge-icon">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="pb3-a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#00a650"/></linearGradient>
+                  <linearGradient id="pb3-b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffd600"/><stop offset="100%" stop-color="#ff8c00"/></linearGradient>
+                  <linearGradient id="pb3-c" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff0066"/><stop offset="100%" stop-color="#ff6d00"/></linearGradient>
+                  <linearGradient id="pb3-d" x1="100%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#0070e0"/></linearGradient>
+                </defs>
+                <path d="M4 41.5V6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pb3-a)"/>
+                <path d="M33.6 20.4 25 15.9 10.2 30.7l14.8 8.9 8.6-5.2a3.3 3.3 0 0 0 0-14z" fill="url(#pb3-b)"/>
+                <path d="M7.7 43.4C6.2 44.5 4 43.4 4 41.5l6.2-10.8 14.8 8.9z" fill="url(#pb3-c)"/>
+                <path d="M4 6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#pb3-d)" opacity=".55"/>
+              </svg>
+            </div>
+            <div class="play-badge-text">
+              <span class="play-small">Coming soon on</span>
+              <span class="play-large">Google Play</span>
+            </div>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="footer">
+    <div class="footer-in">
+      <img src="/railquick-logo.png" alt="RailQuick" class="f-logo" />
+      <p class="f-copy">© 2025 RailQuick. Built for Indian train travellers.</p>
+      <a href="https://railquick.in" target="_blank" rel="noreferrer" class="f-link">railquick.in</a>
+    </div>
+  </footer>
+
+  <!-- =================== MODALS =================== -->
+
+  <!-- Success -->
+  <div class="modal" id="successModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="s-title">
+    <div class="modal-scrim" data-close-modal></div>
+    <div class="modal-box">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4l12 12M16 4L4 16" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="28" height="28"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="modal-eyebrow">You're on the list</p>
+      <h2 id="s-title" class="modal-h">Welcome to RailQuick.</h2>
+      <p class="modal-p">You've secured your early access spot. We'll email you the moment RailQuick launches in your city.</p>
+      <div class="modal-btns">
+        <a class="mbtn mbtn-solid" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in</a>
+        <button class="mbtn mbtn-ghost" type="button" data-close-modal>Stay here</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- App / Play Store -->
+  <div class="modal" id="appModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="a-title">
+    <div class="modal-scrim" data-close-app-modal></div>
+    <div class="modal-box">
+      <button class="modal-close" type="button" data-close-app-modal aria-label="Close">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4l12 12M16 4L4 16" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-play-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="mpa" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#00a650"/></linearGradient>
+            <linearGradient id="mpb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffd600"/><stop offset="100%" stop-color="#ff8c00"/></linearGradient>
+            <linearGradient id="mpc" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff0066"/><stop offset="100%" stop-color="#ff6d00"/></linearGradient>
+            <linearGradient id="mpd" x1="100%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#0070e0"/></linearGradient>
+          </defs>
+          <path d="M4 41.5V6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#mpa)"/>
+          <path d="M33.6 20.4 25 15.9 10.2 30.7l14.8 8.9 8.6-5.2a3.3 3.3 0 0 0 0-14z" fill="url(#mpb)"/>
+          <path d="M7.7 43.4C6.2 44.5 4 43.4 4 41.5l6.2-10.8 14.8 8.9z" fill="url(#mpc)"/>
+          <path d="M4 6.5C4 4.6 6.2 3.5 7.7 4.6L25 15.9 10.2 30.7z" fill="url(#mpd)" opacity=".55"/>
+        </svg>
+      </div>
+      <p class="modal-eyebrow">Coming Soon</p>
+      <h2 id="a-title" class="modal-h">RailQuick on Google Play</h2>
+      <p class="modal-p">The app is in development. Join the waitlist and we'll notify you the moment it launches on Google Play.</p>
+      <div class="modal-btns">
+        <a class="mbtn mbtn-solid" href="#waitlistForm" data-close-app-modal>Join Waitlist</a>
+        <button class="mbtn mbtn-ghost" type="button" data-close-app-modal>Maybe later</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
 </html>
