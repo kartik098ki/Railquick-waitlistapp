@@ -1,6 +1,9 @@
 [build]
   publish = "public"
 
+[functions]
+  node_version = "22"
+
 [[redirects]]
   from = "/api/waitlist"
   to = "/.netlify/functions/waitlist"
