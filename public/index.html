@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="RailQuick is launching soon — essential items delivered to your train seat. Join the waitlist for early access." />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#15803d" />
   <title>RailQuick — Coming Soon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,30 +13,43 @@
 </head>
 <body>
 
-  <!-- ===== NAV ===== -->
+  <!-- ====================================================
+       NAV
+       ==================================================== -->
   <header class="nav">
-    <a href="/" class="nav-brand">
+    <!-- Rainbow top line -->
+    <div class="nav-rainbow" aria-hidden="true"></div>
+
+    <a href="/" class="nav-brand" aria-label="RailQuick home">
       <img src="/railquick-logo.png" alt="RailQuick" class="nav-logo" />
     </a>
+
+    <div class="nav-centre">
+      <span class="nav-pill">
+        <span class="nav-pill-dot"></span>
+        Coming Soon
+      </span>
+    </div>
+
     <div class="nav-actions">
-      <a class="btn-site-nav" href="https://railquick.in" target="_blank" rel="noreferrer">railquick.in</a>
-      <a class="btn-join" href="#waitlistForm">Join Waitlist</a>
+      <a class="nav-link" href="https://railquick.in" target="_blank" rel="noreferrer">railquick.in</a>
+      <a class="nav-cta" href="#waitlistForm">Join Waitlist</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ===== HERO ===== -->
+    <!-- ====================================================
+         HERO
+         ==================================================== -->
     <section class="page" id="top">
 
-      <!-- LEFT -->
+      <!-- LEFT COLUMN -->
       <div class="col-left">
-
-        <p class="eyebrow"><span class="eyebrow-dot"></span>Coming Soon</p>
 
         <h1 class="headline">
           From Station<br/>
-          <span class="headline-italic">to Your</span> Seat.
+          <em class="headline-em">to Your</em> Seat.
         </h1>
 
         <p class="subline">
@@ -44,7 +57,7 @@
           hygiene kits, baby care &amp; more. While you travel, we deliver.
         </p>
 
-        <!-- Stats -->
+        <!-- Stats — 2 only -->
         <div class="stats-row">
           <div class="stat-item">
             <span class="stat-n">500+</span>
@@ -55,48 +68,25 @@
             <span class="stat-n">India's First</span>
             <span class="stat-l">Train-seat delivery app</span>
           </div>
-          <div class="stat-sep"></div>
-          <div class="stat-item">
-            <span class="stat-n">Free</span>
-            <span class="stat-l">To join, always</span>
-          </div>
         </div>
 
-        <!-- Visit website -->
-        <a class="btn-site" href="https://railquick.in" target="_blank" rel="noreferrer">
+        <!-- Visit site — desktop only -->
+        <a class="btn-site desktop-only" href="https://railquick.in" target="_blank" rel="noreferrer">
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 0 1 0 16M10 2a14 14 0 0 0 0 16"/></svg>
           Visit railquick.in
           <svg class="arr-out" width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h12v12M4 16 16 4" stroke-linecap="round"/></svg>
         </a>
 
-        <!-- Google Play badge — the REAL logo -->
-        <button class="play-badge" type="button" data-open-app-modal aria-label="Coming soon on Google Play">
-          <!--
-            Real Google Play logo: 4 coloured triangles sharing a centroid.
-            Triangle vertices: top-left(18,5), bot-left(18,43), right-tip(42,24)
-            Centroid: (26, 24). 4 colour sections:
-            Teal   = (18,5)→(26,24)→(18,24)
-            Green  = (18,43)→(26,24)→(18,24)
-            Yellow = (18,5)→(42,24)→(26,24)
-            Red    = (18,43)→(42,24)→(26,24)
-          -->
+        <!-- Google Play badge — desktop only -->
+        <button class="play-badge desktop-only" type="button" data-open-app-modal aria-label="Coming soon on Google Play">
           <div class="play-icon-box">
-            <svg class="play-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <!-- White rounded square background -->
-              <rect width="60" height="60" rx="14" fill="#ffffff" filter="url(#ps-shadow)"/>
-              <defs>
-                <filter id="ps-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,.12)"/>
-                </filter>
-              </defs>
-              <!-- Teal (top-left) -->
-              <path d="M20 8 L31 30 L20 30 Z" fill="#29B6F6"/>
-              <!-- Green (bottom-left) -->
-              <path d="M20 52 L31 30 L20 30 Z" fill="#4CAF50"/>
-              <!-- Yellow (top-right) -->
-              <path d="M20 8 L52 30 L31 30 Z" fill="#FFCA28"/>
-              <!-- Red (bottom-right) -->
-              <path d="M20 52 L52 30 L31 30 Z" fill="#F44336"/>
+            <svg class="play-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="60" height="60" rx="13" fill="#fff" filter="url(#psd)"/>
+              <defs><filter id="psd" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,.14)"/></filter></defs>
+              <path d="M19 8 L31 30 L19 30 Z" fill="#29B6F6"/>
+              <path d="M19 52 L31 30 L19 30 Z" fill="#4CAF50"/>
+              <path d="M19 8 L53 30 L31 30 Z" fill="#FFCA28"/>
+              <path d="M19 52 L53 30 L31 30 Z" fill="#F44336"/>
             </svg>
           </div>
           <div class="play-text">
@@ -108,19 +98,20 @@
 
       </div>
 
-      <!-- RIGHT — Form -->
+      <!-- RIGHT COLUMN — Form -->
       <div class="col-right" id="form-anchor">
         <form class="form-card" id="waitlistForm" novalidate>
 
           <div class="form-shimmer" aria-hidden="true"></div>
 
+          <!-- Header -->
           <div class="form-head">
             <span class="form-pill">Early Access</span>
             <h2 class="form-h2">Reserve your spot</h2>
             <p class="form-desc">Be the first to know when RailQuick launches in your city.</p>
           </div>
 
-          <!-- Proof -->
+          <!-- Social proof -->
           <div class="proof-bar">
             <div class="av-group">
               <span class="av" style="background:#34d399;color:#064e3b">K</span>
@@ -150,6 +141,7 @@
             </div>
           </div>
 
+          <!-- Submit -->
           <button type="submit" id="submitButton">
             <span id="btn-label">Notify Me at Launch</span>
             <svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -158,74 +150,71 @@
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           <p class="form-note">No spam. Unsubscribe any time. Your data is safe.</p>
 
-          <!-- Mobile: site + play -->
-          <div class="form-foot mobile-only">
-            <a class="btn-site btn-site-sm" href="https://railquick.in" target="_blank" rel="noreferrer">
-              <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 0 1 0 16M10 2a14 14 0 0 0 0 16"/></svg>
+          <!-- ── Mobile-only bottom ── -->
+          <div class="form-mobile-foot">
+
+            <!-- Visit site -->
+            <a class="form-site-link" href="https://railquick.in" target="_blank" rel="noreferrer">
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 0 1 0 16M10 2a14 14 0 0 0 0 16"/></svg>
               Visit railquick.in
+              <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h12v12M4 16 16 4" stroke-linecap="round"/></svg>
             </a>
-            <button class="play-badge play-badge-sm" type="button" data-open-app-modal>
-              <div class="play-icon-box">
-                <svg class="play-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect width="60" height="60" rx="14" fill="#ffffff" filter="url(#ps-shadow2)"/>
-                  <defs><filter id="ps-shadow2" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,.12)"/></filter></defs>
-                  <path d="M20 8 L31 30 L20 30 Z" fill="#29B6F6"/>
-                  <path d="M20 52 L31 30 L20 30 Z" fill="#4CAF50"/>
-                  <path d="M20 8 L52 30 L31 30 Z" fill="#FFCA28"/>
-                  <path d="M20 52 L52 30 L31 30 Z" fill="#F44336"/>
-                </svg>
-              </div>
-              <div class="play-text">
-                <span class="play-sub">Coming soon on</span>
-                <span class="play-main">Google Play</span>
-              </div>
-            </button>
+
+            <!-- Play store badge centered -->
+            <div class="form-play-center">
+              <p class="form-play-label">Coming soon on</p>
+              <button class="form-play-btn" type="button" data-open-app-modal aria-label="Coming soon on Google Play">
+                <div class="play-icon-box">
+                  <svg class="play-svg play-svg-sm" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="60" height="60" rx="13" fill="#fff" filter="url(#psd2)"/>
+                    <defs><filter id="psd2" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,.14)"/></filter></defs>
+                    <path d="M19 8 L31 30 L19 30 Z" fill="#29B6F6"/>
+                    <path d="M19 52 L31 30 L19 30 Z" fill="#4CAF50"/>
+                    <path d="M19 8 L53 30 L31 30 Z" fill="#FFCA28"/>
+                    <path d="M19 52 L53 30 L31 30 Z" fill="#F44336"/>
+                  </svg>
+                </div>
+                <span class="form-play-word">Google Play</span>
+              </button>
+            </div>
+
           </div>
+          <!-- end mobile-only bottom -->
 
         </form>
       </div>
 
     </section>
 
-    <!-- ===== HOW IT WORKS ===== -->
+    <!-- ====================================================
+         HOW IT WORKS
+         ==================================================== -->
     <section class="hiw" id="how-it-works">
       <div class="hiw-inner">
 
-        <!-- Header -->
         <div class="hiw-header">
           <p class="hiw-eyebrow">How it works</p>
-          <h2 class="hiw-h2">
-            Get your essentials in<br/>
-            <em class="hiw-em">3 simple steps</em>
-          </h2>
+          <h2 class="hiw-h2">Get your essentials in<br/><em class="hiw-em">3 simple steps</em></h2>
         </div>
 
-        <!-- Desktop: 3 column cards -->
+        <!-- Desktop 3-col -->
         <div class="hiw-desktop">
           <div class="hiw-card-d" data-step="01">
             <div class="hiw-d-num">01</div>
             <h3 class="hiw-d-title">Upcoming Station</h3>
             <p class="hiw-d-p">Order from inside the running train for delivery at the upcoming station.</p>
           </div>
-
           <div class="hiw-arrow-d" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M4 14h20M16 7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14h20M16 7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-
           <div class="hiw-card-d hiw-card-d--mid" data-step="02">
             <div class="hiw-d-num">02</div>
             <h3 class="hiw-d-title">Add Details &amp; Order</h3>
             <p class="hiw-d-p">Add your train number and seat, pick what you need.</p>
           </div>
-
           <div class="hiw-arrow-d" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M4 14h20M16 7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14h20M16 7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-
           <div class="hiw-card-d" data-step="03">
             <div class="hiw-d-num">03</div>
             <h3 class="hiw-d-title">On-Seat Delivery</h3>
@@ -233,17 +222,15 @@
           </div>
         </div>
 
-        <!-- Mobile: vertical timeline -->
+        <!-- Mobile vertical timeline -->
         <div class="hiw-mobile">
 
           <div class="hiw-step">
             <div class="hiw-step-left">
-              <div class="hiw-step-num-wrap">
-                <span class="hiw-step-num">01</span>
-              </div>
-              <div class="hiw-step-line"></div>
+              <div class="hiw-bubble">01</div>
+              <div class="hiw-line"></div>
             </div>
-            <div class="hiw-step-card">
+            <div class="hiw-step-body">
               <h3>Upcoming Station</h3>
               <p>Order from inside the running train for delivery at the upcoming station.</p>
             </div>
@@ -251,12 +238,10 @@
 
           <div class="hiw-step">
             <div class="hiw-step-left">
-              <div class="hiw-step-num-wrap hiw-step-num-wrap--mid">
-                <span class="hiw-step-num">02</span>
-              </div>
-              <div class="hiw-step-line"></div>
+              <div class="hiw-bubble hiw-bubble--dark">02</div>
+              <div class="hiw-line"></div>
             </div>
-            <div class="hiw-step-card hiw-step-card--mid">
+            <div class="hiw-step-body hiw-step-body--mid">
               <h3>Add Details &amp; Order</h3>
               <p>Add your train number and seat, pick what you need.</p>
             </div>
@@ -264,13 +249,11 @@
 
           <div class="hiw-step hiw-step--last">
             <div class="hiw-step-left">
-              <div class="hiw-step-num-wrap">
-                <span class="hiw-step-num">03</span>
-              </div>
+              <div class="hiw-bubble">03</div>
             </div>
-            <div class="hiw-step-card">
+            <div class="hiw-step-body">
               <h3>On-Seat Delivery</h3>
-              <p>We deliver directly to you in the running train. No queues, no stops.</p>
+              <p>We deliver directly to you in the running train.</p>
             </div>
           </div>
 
@@ -281,7 +264,9 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
   <footer class="footer">
     <div class="footer-in">
       <img src="/railquick-logo.png" alt="RailQuick" class="f-logo" />
@@ -290,52 +275,62 @@
     </div>
   </footer>
 
-  <!-- ===== SUCCESS MODAL ===== -->
+  <!-- ====================================================
+       SUCCESS MODAL
+       ==================================================== -->
   <div class="modal" id="successModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="s-title">
     <div class="modal-scrim" data-close-modal></div>
     <div class="modal-box">
-      <button class="modal-close" type="button" data-close-modal aria-label="Close">
+      <button class="modal-x" type="button" data-close-modal aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4l12 12M16 4L4 16" stroke-linecap="round"/></svg>
       </button>
-      <div class="modal-ring" aria-hidden="true">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
-          <circle cx="30" cy="30" r="27" stroke="#bbf7d0" stroke-width="2.5"/>
-          <circle cx="30" cy="30" r="27" stroke="#15803d" stroke-width="2.5" stroke-dasharray="170" stroke-dashoffset="170" class="ring-draw"/>
-          <path d="M18 30l8 8 16-16" stroke="#15803d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="28" stroke-dashoffset="28" class="check-draw"/>
-        </svg>
+      <!-- Green header band -->
+      <div class="modal-top-band">
+        <div class="modal-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.2)"/>
+            <path d="M13 24l7 8 15-16" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="32" stroke-dashoffset="32" class="check-anim"/>
+          </svg>
+        </div>
+        <p class="modal-band-tag">You're in</p>
       </div>
-      <p class="modal-eyebrow">You're on the list</p>
-      <h2 id="s-title" class="modal-h">Welcome to RailQuick.</h2>
-      <p class="modal-p">Early access secured. We'll email you the moment RailQuick launches in your city.</p>
-      <div class="modal-btns">
-        <a class="mbtn mbtn-solid" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in</a>
-        <button class="mbtn mbtn-ghost" type="button" data-close-modal>Stay here</button>
+      <div class="modal-body">
+        <h2 id="s-title" class="modal-h">Welcome to RailQuick.</h2>
+        <p class="modal-p">Early access secured. We'll email you the moment RailQuick launches in your city — keep an eye on your inbox.</p>
+        <div class="modal-btns">
+          <a class="mbtn mbtn-solid" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in</a>
+          <button class="mbtn mbtn-ghost" type="button" data-close-modal>Stay here</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== APP MODAL ===== -->
+  <!-- ====================================================
+       APP MODAL
+       ==================================================== -->
   <div class="modal" id="appModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="a-title">
     <div class="modal-scrim" data-close-app-modal></div>
     <div class="modal-box">
-      <button class="modal-close" type="button" data-close-app-modal aria-label="Close">
+      <button class="modal-x" type="button" data-close-app-modal aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4l12 12M16 4L4 16" stroke-linecap="round"/></svg>
       </button>
-      <div class="modal-play-frame" aria-hidden="true">
-        <svg viewBox="0 0 60 60" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
-          <rect width="60" height="60" rx="14" fill="#f4f4f5"/>
-          <path d="M20 8 L31 30 L20 30 Z" fill="#29B6F6"/>
-          <path d="M20 52 L31 30 L20 30 Z" fill="#4CAF50"/>
-          <path d="M20 8 L52 30 L31 30 Z" fill="#FFCA28"/>
-          <path d="M20 52 L52 30 L31 30 Z" fill="#F44336"/>
-        </svg>
-      </div>
-      <p class="modal-eyebrow">Coming Soon</p>
-      <h2 id="a-title" class="modal-h">RailQuick on Google Play</h2>
-      <p class="modal-p">The app is in development. Join the waitlist and we'll be the first to notify you when it goes live.</p>
-      <div class="modal-btns">
-        <a class="mbtn mbtn-solid" href="#waitlistForm" data-close-app-modal>Join Waitlist</a>
-        <button class="mbtn mbtn-ghost" type="button" data-close-app-modal>Maybe later</button>
+      <div class="modal-body modal-body-pad">
+        <div class="modal-play-card" aria-hidden="true">
+          <svg viewBox="0 0 60 60" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+            <rect width="60" height="60" rx="13" fill="#f4f4f5"/>
+            <path d="M19 8 L31 30 L19 30 Z" fill="#29B6F6"/>
+            <path d="M19 52 L31 30 L19 30 Z" fill="#4CAF50"/>
+            <path d="M19 8 L53 30 L31 30 Z" fill="#FFCA28"/>
+            <path d="M19 52 L53 30 L31 30 Z" fill="#F44336"/>
+          </svg>
+        </div>
+        <p class="modal-eyebrow">Coming Soon</p>
+        <h2 id="a-title" class="modal-h">RailQuick on Google Play</h2>
+        <p class="modal-p">The app is currently in development. Join the waitlist and we'll notify you the moment it goes live on Google Play.</p>
+        <div class="modal-btns">
+          <a class="mbtn mbtn-solid" href="#waitlistForm" data-close-app-modal>Join Waitlist</a>
+          <button class="mbtn mbtn-ghost" type="button" data-close-app-modal>Maybe later</button>
+        </div>
       </div>
     </div>
   </div>
