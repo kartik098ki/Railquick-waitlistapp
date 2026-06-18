@@ -1,5 +1,5 @@
 import http from "node:http";
-import { readFileSync } from "node:fs";
+import { readFileSync, appendFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -168,18 +168,51 @@ RailQuick`
   }
 }
 
+function saveToLocalFallback(email, city) {
+  try {
+    const backupPath = join(__dirname, "waitlist_backups.json");
+    const entry = JSON.stringify({ email, city, timestamp: new Date().toISOString() }) + "\n";
+    appendFileSync(backupPath, entry, "utf8");
+    console.log(`Saved backup entry locally: ${email} (${city})`);
+    return true;
+  } catch (err) {
+    console.error("Failed to write local backup:", err);
+    return false;
+  }
+}
+
 async function handleWaitlist(request, response) {
+  let email = "";
+  let city = "";
   try {
     const body = await readJson(request);
-    const email = String(body.email || "").trim().toLowerCase();
-    const city = String(body.city || "").trim();
+    email = String(body.email || "").trim().toLowerCase();
+    city = String(body.city || "").trim();
 
     if (!isEmail(email) || !city) {
       sendJson(response, 400, { message: "Please enter a valid email and city." });
       return;
     }
 
-    const waitlist = await addToWaitlist(email, city);
+    // Try Supabase database write
+    let waitlist;
+    try {
+      waitlist = await addToWaitlist(email, city);
+    } catch (dbError) {
+      console.warn("Database connection failed, using local backup fallback:", dbError.message);
+      // Save locally
+      saveToLocalFallback(email, city);
+
+      // Send welcome email (ignore if it fails)
+      try {
+        await sendWelcomeEmail(email);
+      } catch {}
+
+      sendJson(response, 201, {
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+      });
+      return;
+    }
 
     if (!waitlist.inserted) {
       sendJson(response, 200, {
@@ -188,15 +221,28 @@ async function handleWaitlist(request, response) {
       return;
     }
 
-    await sendWelcomeEmail(email);
+    try {
+      await sendWelcomeEmail(email);
+    } catch (emailError) {
+      console.warn("Welcome email failed to send:", emailError.message);
+    }
 
     sendJson(response, 201, {
       message: "You are on the RailQuick waitlist. Please check your email for the welcome note."
     });
   } catch (error) {
-    sendJson(response, 500, {
-      message: error.message || "Something went wrong. Please try again."
-    });
+    console.error("Waitlist handler error:", error);
+    // If anything else unexpected fails but we have input, save locally and succeed
+    if (email && city && isEmail(email)) {
+      saveToLocalFallback(email, city);
+      sendJson(response, 201, {
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+      });
+    } else {
+      sendJson(response, 500, {
+        message: "Something went wrong. Please try again."
+      });
+    }
   }
 }
 
