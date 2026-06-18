@@ -1,5 +1,5 @@
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_PUBLISHABLE_KEY;
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFrom = process.env.RESEND_FROM || "Kartik Guleria <kartik@railquick.in>";
 
@@ -18,8 +18,11 @@ function isEmail(value) {
 }
 
 async function supabaseRequest(path, options = {}) {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error("Supabase is not configured on the server.");
+  if (!supabaseUrl) {
+    throw new Error("SUPABASE_URL environment variable is missing on Netlify dashboard.");
+  }
+  if (!supabaseAnonKey) {
+    throw new Error("SUPABASE_ANON_KEY (or SUPABASE_SECRET_KEY) environment variable is missing on Netlify dashboard.");
   }
 
   const response = await fetch(`${supabaseUrl}/rest/v1/${path}`, {
