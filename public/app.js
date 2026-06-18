@@ -75,10 +75,18 @@ if (form) {
         body:    JSON.stringify({ email, city }),
       });
 
-      const data = await res.json();
+      let data = {};
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        console.error("Non-JSON API response received:", text);
+        throw new Error(`Server error (${res.status}): Please check Netlify function logs.`);
+      }
 
       if (!res.ok) {
-        throw new Error(data.message || 'Something went wrong. Please try again.');
+        throw new Error(data.message || `Server error (${res.status}): Something went wrong.`);
       }
 
       // Success
