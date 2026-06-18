@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="RailQuick is launching soon — essential items delivered to your train seat. Chargers, medicines, hygiene kits & more. Join the waitlist for early access." />
+    <meta property="og:title" content="RailQuick • Coming Soon" />
+    <meta property="og:description" content="Get essentials delivered to your train seat. Join the waitlist." />
+    <meta name="theme-color" content="#05bf64" />
+    <title>RailQuick • Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+
+    <!-- Animated background particles -->
+    <div class="bg-canvas" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+      <div class="train-tracks">
+        <div class="track track-1"></div>
+        <div class="track track-2"></div>
+        <div class="train-dot"></div>
+      </div>
+      <div class="floating-particles" id="particles"></div>
+    </div>
+
+    <!-- Main page -->
+    <div class="page-wrapper">
+
+      <!-- NAV -->
+      <nav class="topbar" aria-label="RailQuick navigation">
+        <div class="logo-wrap">
+          <img class="logo" src="/railquick-logo.png" alt="RailQuick" />
+        </div>
+        <div class="nav-pills">
+          <a class="nav-pill" href="#waitlistForm">Join Waitlist</a>
+          <button class="nav-pill pill-play" type="button" data-open-app-modal aria-label="App coming soon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
+              <path d="M4.5 3.2v17.6c0 .7.8 1.1 1.4.7l10.5-8.6c.5-.4.5-1.2 0-1.6L5.9 2.5c-.6-.4-1.4 0-1.4.7Z" fill="#05bf64"/>
+              <path d="m16.4 12.9 2.9-2.4c.6-.5 1.5-.1 1.5.7v1.6c0 .8-.9 1.2-1.5.7l-2.9-2.4Z" fill="#ff8847"/>
+            </svg>
+            Play Store
+          </button>
+          <a class="nav-pill pill-site" href="https://railquick.in" target="_blank" rel="noreferrer">railquick.in ↗</a>
+        </div>
+      </nav>
+
+      <!-- HERO SECTION -->
+      <main class="hero-section">
+
+        <!-- Left content -->
+        <div class="hero-left">
+
+          <!-- Coming soon badge -->
+          <div class="badge-row">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Something big is coming</span>
+          </div>
+
+          <!-- Main headline -->
+          <h1 class="hero-title">
+            <span class="title-line">From</span>
+            <span class="title-line accent">Station</span>
+            <span class="title-line">to Seat.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Chargers, medicines, hygiene kits, baby care &amp; more —<br/>
+            <strong>delivered right to your train seat.</strong>
+          </p>
+
+          <!-- Countdown timer -->
+          <div class="countdown-wrap" aria-label="Launch countdown">
+            <p class="countdown-label">🚂 &nbsp;Launch countdown</p>
+            <div class="countdown-grid" id="countdown">
+              <div class="count-unit">
+                <span class="count-num" id="cd-days">00</span>
+                <span class="count-label">Days</span>
+              </div>
+              <div class="count-sep">:</div>
+              <div class="count-unit">
+                <span class="count-num" id="cd-hours">00</span>
+                <span class="count-label">Hours</span>
+              </div>
+              <div class="count-sep">:</div>
+              <div class="count-unit">
+                <span class="count-num" id="cd-mins">00</span>
+                <span class="count-label">Mins</span>
+              </div>
+              <div class="count-sep">:</div>
+              <div class="count-unit">
+                <span class="count-num" id="cd-secs">00</span>
+                <span class="count-label">Secs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress steps -->
+          <div class="journey-steps" aria-label="Launch journey">
+            <div class="step step-done">
+              <span class="step-icon">✓</span>
+              <span class="step-txt">Waitlist live</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step step-active">
+              <span class="step-icon pulse-ring"></span>
+              <span class="step-txt">App building</span>
+            </div>
+            <div class="step-line step-line-dim"></div>
+            <div class="step step-future">
+              <span class="step-icon"></span>
+              <span class="step-txt">City launches</span>
+            </div>
+          </div>
+
+          <!-- Delivery promise tags -->
+          <div class="promise-tags">
+            <span class="tag tag-green">📦 Order on journey</span>
+            <span class="tag tag-orange">🚉 At your coach</span>
+            <span class="tag tag-green">💺 Delivered to seat</span>
+          </div>
+
+        </div>
+
+        <!-- Right: Waitlist form -->
+        <div class="hero-right" id="waitlistForm-wrapper">
+
+          <!-- Floating essentials cards above form (mobile hidden) -->
+          <div class="float-cards" aria-hidden="true">
+            <div class="float-card">⚡ Chargers</div>
+            <div class="float-card">💊 Medicines</div>
+            <div class="float-card">🧴 Hygiene</div>
+            <div class="float-card">👶 Baby Care</div>
+          </div>
+
+          <form class="waitlist-card" id="waitlistForm" novalidate>
+
+            <div class="card-shine" aria-hidden="true"></div>
+
+            <div class="form-head">
+              <div class="form-badge">🎟️ &nbsp;Limited Early Access</div>
+              <h2 id="form-title">Get early access</h2>
+              <p class="form-sub">Join thousands waiting for RailQuick in their city.</p>
+            </div>
+
+            <!-- Social proof -->
+            <div class="social-proof">
+              <div class="avatar-stack">
+                <span class="av" style="background:#4ade80">K</span>
+                <span class="av" style="background:#fb923c">R</span>
+                <span class="av" style="background:#60a5fa">A</span>
+                <span class="av" style="background:#f472b6">S</span>
+              </div>
+              <span class="proof-text">1,200+ already on waitlist</span>
+            </div>
+
+            <div class="field-group">
+              <label for="email">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                Email address
+              </label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required aria-required="true" />
+            </div>
+
+            <div class="field-group">
+              <label for="city">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s-8-5.5-8-12a8 8 0 0 1 16 0c0 6.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+                Your city
+              </label>
+              <input id="city" name="city" type="text" placeholder="Mumbai, Delhi, Pune…" autocomplete="address-level2" required aria-required="true" />
+            </div>
+
+            <button type="submit" id="submitButton" aria-label="Join RailQuick waitlist">
+              <span id="btn-label">Join the Waitlist</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+
+            <p class="form-footer">
+              🔒 No spam. Unsubscribe anytime. We respect your privacy.
+            </p>
+          </form>
+        </div>
+      </main>
+
+      <!-- ESSENTIALS STRIP -->
+      <div class="essentials-strip" aria-label="Deliverable essentials">
+        <div class="strip-inner">
+          <span>⚡ Phone Chargers</span>
+          <span class="strip-dot">•</span>
+          <span>💊 Medicines</span>
+          <span class="strip-dot">•</span>
+          <span>🧴 Hygiene Kits</span>
+          <span class="strip-dot">•</span>
+          <span>👶 Baby Care</span>
+          <span class="strip-dot">•</span>
+          <span>🍫 Snacks</span>
+          <span class="strip-dot">•</span>
+          <span>📱 Travel Accessories</span>
+          <span class="strip-dot">•</span>
+          <span>💧 Water Bottles</span>
+          <span class="strip-dot">•</span>
+          <span>⚡ Phone Chargers</span>
+          <span class="strip-dot">•</span>
+          <span>💊 Medicines</span>
+          <span class="strip-dot">•</span>
+          <span>🧴 Hygiene Kits</span>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <p class="footer-brand">RailQuick</p>
+          <p class="footer-copy">© 2025 RailQuick. Built with ❤️ for Indian train travellers.</p>
+          <a class="footer-link" href="https://railquick.in" target="_blank" rel="noreferrer">railquick.in ↗</a>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay" id="successModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-box">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close">✕</button>
+        <div class="modal-icon success-icon" aria-hidden="true">🎉</div>
+        <p class="modal-kicker">You're on the list!</p>
+        <h2 id="successTitle">Welcome to RailQuick.</h2>
+        <p class="modal-body">
+          You've secured your spot for early access. We'll notify you when RailQuick launches in your city — check your email for a welcome note.
+        </p>
+        <div class="modal-actions">
+          <a class="modal-btn modal-btn-primary" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in</a>
+          <button class="modal-btn modal-btn-ghost" type="button" data-close-modal>Stay here</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- APP MODAL -->
+    <div class="modal-overlay" id="appModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="appTitle">
+      <div class="modal-backdrop" data-close-app-modal></div>
+      <div class="modal-box">
+        <button class="modal-close" type="button" data-close-app-modal aria-label="Close">✕</button>
+        <div class="modal-icon app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M4.5 3.2v17.6c0 .7.8 1.1 1.4.7l10.5-8.6c.5-.4.5-1.2 0-1.6L5.9 2.5c-.6-.4-1.4 0-1.4.7Z" fill="#05bf64"/>
+            <path d="m16.4 12.9 2.9-2.4c.6-.5 1.5-.1 1.5.7v1.6c0 .8-.9 1.2-1.5.7l-2.9-2.4Z" fill="#ff8847"/>
+          </svg>
+        </div>
+        <p class="modal-kicker">Coming Soon</p>
+        <h2 id="appTitle">RailQuick app is on its way.</h2>
+        <p class="modal-body">
+          Join the waitlist and we'll be the first to notify you when the Play Store app goes live. Don't miss out on early access.
+        </p>
+        <div class="modal-actions">
+          <a class="modal-btn modal-btn-primary" href="#waitlistForm" data-close-app-modal>Join Waitlist</a>
+          <button class="modal-btn modal-btn-ghost" type="button" data-close-app-modal>Maybe later</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
