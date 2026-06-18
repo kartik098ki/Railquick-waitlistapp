@@ -512,32 +512,42 @@ input:focus { border-color: var(--g); background: #fff; box-shadow: 0 0 0 3.5px 
    ============================================================= */
 .modal { position: fixed; inset: 0; z-index: 500; display: none; place-items: center; padding: 20px; }
 .modal[aria-hidden="false"] { display: grid; }
-.modal-scrim { position: absolute; inset: 0; background: rgba(6,6,6,.48); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.modal-scrim { position: absolute; inset: 0; background: rgba(6,6,6,.5); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 
 .modal-box {
   position: relative; z-index: 1;
-  width: min(100%, 468px);
-  background: #fff;
-  border: 1.5px solid var(--line);
-  border-radius: 28px;
+  width: min(100%, 460px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 26px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,.04), 0 24px 64px rgba(0,0,0,.14), 0 64px 128px rgba(0,0,0,.08);
-  animation: pop .38s cubic-bezier(.34,1.56,.64,1) both;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.06),
+    0 30px 80px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  animation: modal-slide-up .42s cubic-bezier(.16,1,.3,1) both;
 }
-@keyframes pop { from { transform: scale(.87) translateY(16px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+@keyframes modal-slide-up {
+  from { transform: translateY(28px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
 
 /* X close button */
 .modal-x {
-  position: absolute; top: 14px; right: 14px; z-index: 10;
+  position: absolute; top: 16px; right: 16px; z-index: 10;
   width: 32px; height: 32px;
   border-radius: 50%;
-  background: rgba(255,255,255,.2);
-  border: 1.5px solid rgba(255,255,255,.35);
-  color: rgba(255,255,255,.8);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
   display: flex; align-items: center; justify-content: center;
-  transition: background 160ms, color 160ms;
+  transition: background 200ms, color 200ms, transform 240ms var(--ease);
 }
-.modal-x:hover { background: rgba(255,255,255,.35); color: #fff; }
+.modal-x:hover {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  transform: rotate(90deg);
+}
 
 /* Close button for modals without green band */
 .modal-body-pad ~ .modal-x,
@@ -546,24 +556,41 @@ input:focus { border-color: var(--g); background: #fff; box-shadow: 0 0 0 3.5px 
   background: var(--surf);
   border-color: var(--line);
 }
+.modal-body-pad ~ .modal-x:hover,
+.modal-body-pad .modal-x:hover {
+  background: var(--line);
+  color: var(--ink);
+}
 
 /* ── Success modal top green band ── */
 .modal-top-band {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 60%, #166534 100%);
-  padding: 32px 24px 28px;
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 60%, #14532d 100%);
+  padding: 38px 24px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   position: relative;
+}
+.modal-top-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% -20%, rgba(255,255,255,0.2) 0%, transparent 75%);
+  pointer-events: none;
 }
 
 .modal-success-icon {
-  width: 64px; height: 64px;
-  background: rgba(255,255,255,.18);
-  border: 2px solid rgba(255,255,255,.3);
+  width: 68px; height: 68px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
+  animation: icon-pulse 2.2s infinite ease-in-out;
+}
+@keyframes icon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
 }
 
 .check-anim {
@@ -577,46 +604,70 @@ input:focus { border-color: var(--g); background: #fff; box-shadow: 0 0 0 3.5px 
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .12em;
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.8);
+  margin-top: 2px;
 }
 
 /* ── Modal body ── */
 .modal-body {
-  padding: clamp(24px, 5vw, 40px);
+  padding: clamp(28px, 6vw, 42px);
   text-align: center;
 }
 
 .modal-body-pad {
-  padding-top: clamp(28px, 5vw, 44px);
+  padding-top: clamp(32px, 6vw, 48px);
 }
 
 /* Play icon card in app modal */
 .modal-play-card {
-  width: 80px; height: 80px;
-  margin: 0 auto 20px;
-  background: var(--surf);
-  border: 1.5px solid var(--line);
+  width: 86px; height: 86px;
+  margin: 0 auto 22px;
+  background: #0d0d0d;
+  border: 1.5px solid #1f1f1f;
   border-radius: 20px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
 }
-.modal-play-card svg { width: 52px; height: 52px; }
+.modal-play-card:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+.modal-play-card svg { width: 50px; height: 50px; }
 
 .modal-eyebrow { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--ink4); margin-bottom: 7px; }
-.modal-h { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 400; color: var(--ink); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 10px; }
-.modal-p { font-size: 0.92rem; color: var(--ink3); line-height: 1.65; margin-bottom: 26px; max-width: 340px; margin-left: auto; margin-right: auto; }
+.modal-h { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.6rem, 4.5vw, 2.2rem); font-weight: 400; color: var(--ink); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 10px; }
+.modal-p { font-size: 0.92rem; color: var(--ink3); line-height: 1.65; margin-bottom: 28px; max-width: 350px; margin-left: auto; margin-right: auto; }
 
 .modal-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mbtn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  height: 48px; border-radius: 12px;
-  font-size: 0.9rem; font-weight: 700; letter-spacing: .01em;
-  transition: all 180ms;
+  height: 50px; border-radius: 14px;
+  font-size: 0.92rem; font-weight: 700; letter-spacing: .01em;
+  transition: all 200ms var(--ease);
 }
-.mbtn-solid { background: var(--g); color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,.28); }
-.mbtn-solid:hover { background: var(--g-dk); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(21,128,61,.36); }
-.mbtn-ghost { background: var(--surf); border: 1.5px solid var(--line); color: var(--ink3); }
-.mbtn-ghost:hover { background: var(--line); color: var(--ink); }
+.mbtn-solid {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(21,128,61,.22);
+}
+.mbtn-solid:hover {
+  background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21,128,61,.32);
+}
+.mbtn-ghost {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  color: var(--ink2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+.mbtn-ghost:hover {
+  background: var(--surf);
+  border-color: var(--ink4);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
 
 /* =============================================================
    ANIMATIONS

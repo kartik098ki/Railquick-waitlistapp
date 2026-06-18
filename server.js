@@ -112,13 +112,30 @@ async function addToWaitlist(email, city) {
     return { inserted: false };
   }
 
-  const { response, data } = await supabaseRequest("waitlist", {
+  // First try inserting with both email and city
+  let { response, data } = await supabaseRequest("waitlist", {
     method: "POST",
     body: JSON.stringify({ email, city })
   });
 
   if (response.ok) {
     return { inserted: true, data };
+  }
+
+  // Fallback: If city column is missing (PGRST204) or bad request status, insert email only
+  if (response.status === 400 || data?.code === "PGRST204") {
+    console.warn("City column not found in Supabase 'waitlist' schema; falling back to email-only insert.");
+    const retry = await supabaseRequest("waitlist", {
+      method: "POST",
+      body: JSON.stringify({ email })
+    });
+    if (retry.response.ok) {
+      return { inserted: true, data: retry.data };
+    }
+    if (retry.data?.code === "23505") {
+      return { inserted: false };
+    }
+    throw new Error(retry.data?.message || "Could not add email to waitlist.");
   }
 
   if (data?.code === "23505") {
