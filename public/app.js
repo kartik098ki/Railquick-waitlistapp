@@ -37,17 +37,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ============================================================
-   SAVED EMAIL CHECK
-   ============================================================ */
-const savedEmail = localStorage.getItem('railquick_waitlist_email');
-if (savedEmail) {
-  const statusEl = document.getElementById('formStatus');
-  if (statusEl) {
-    statusEl.textContent = 'You are already on the RailQuick waitlist. We will notify you at launch.';
-  }
-}
-
-/* ============================================================
    FORM SUBMIT
    ============================================================ */
 const form      = document.getElementById('waitlistForm');
@@ -72,12 +61,6 @@ if (form) {
     if (!email || !city) {
       statusEl.textContent = 'Please fill in both your email address and city.';
       statusEl.className   = 'form-status error';
-      return;
-    }
-
-    // Already joined (local check)
-    if (localStorage.getItem('railquick_waitlist_email') === email) {
-      statusEl.textContent = 'You are already on the waitlist. Check your inbox for our welcome email.';
       return;
     }
 

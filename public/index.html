@@ -328,24 +328,37 @@
        ==================================================== -->
   <div class="modal" id="successModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="s-title">
     <div class="modal-scrim" data-close-modal></div>
-    <div class="modal-box">
+    <div class="modal-box success-modal-box">
       <button class="modal-x" type="button" data-close-modal aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4l12 12M16 4L4 16" stroke-linecap="round"/></svg>
       </button>
-      <!-- Green header band -->
-      <div class="modal-top-band">
-        <div class="modal-success-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
-            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,.2)"/>
-            <path d="M13 24l7 8 15-16" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="32" stroke-dashoffset="32" class="check-anim"/>
-          </svg>
+      
+      <div class="success-modal-content">
+        <!-- Glowing Ring Checkmark -->
+        <div class="success-ring-wrap" aria-hidden="true">
+          <div class="success-ring-pulse"></div>
+          <div class="success-ring-icon">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
         </div>
-        <p class="modal-band-tag">You're in</p>
-      </div>
-      <div class="modal-body">
-        <h2 id="s-title" class="modal-h">Welcome to RailQuick.</h2>
-        <p class="modal-p">Early access secured. We'll email you the moment RailQuick launches in your city — keep an eye on your inbox.</p>
-        <div class="modal-btns">
+        
+        <h2 id="s-title" class="success-title">You're on the list!</h2>
+        <p class="success-desc">Early access secured. A welcome email has been sent. We'll notify you the moment RailQuick launches in your city.</p>
+        
+        <div class="success-steps">
+          <div class="success-step-item">
+            <div class="step-bullet">1</div>
+            <p class="step-text">Check your email (and spam folder) for our confirmation.</p>
+          </div>
+          <div class="success-step-item">
+            <div class="step-bullet">2</div>
+            <p class="step-text">Priority rollout updates will be sent directly to your inbox.</p>
+          </div>
+        </div>
+        
+        <div class="modal-btns success-modal-btns">
           <a class="mbtn mbtn-solid" href="https://railquick.in" target="_blank" rel="noreferrer">Visit railquick.in</a>
           <button class="mbtn mbtn-ghost" type="button" data-close-modal>Stay here</button>
         </div>

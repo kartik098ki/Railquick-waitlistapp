@@ -232,8 +232,13 @@ async function handleWaitlist(request, response) {
     }
 
     if (!waitlist.inserted) {
+      try {
+        await sendWelcomeEmail(email);
+      } catch (emailError) {
+        console.warn("Welcome email failed to send on resubmission:", emailError.message);
+      }
       sendJson(response, 200, {
-        message: "You are already on the RailQuick waitlist. We will keep you updated."
+        message: "You are already on the RailQuick waitlist. We sent another welcome email!"
       });
       return;
     }
