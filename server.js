@@ -187,10 +187,13 @@ RailQuick`
 
 function saveToLocalFallback(email, city) {
   try {
-    const backupPath = join(__dirname, "waitlist_backups.json");
+    const isServerless = process.env.LAMBDA_TASK_ROOT || process.env.VERCEL || process.env.NETLIFY;
+    const backupPath = isServerless
+      ? "/tmp/waitlist_backups.json"
+      : join(__dirname, "waitlist_backups.json");
     const entry = JSON.stringify({ email, city, timestamp: new Date().toISOString() }) + "\n";
     appendFileSync(backupPath, entry, "utf8");
-    console.log(`Saved backup entry locally: ${email} (${city})`);
+    console.log(`Saved backup entry locally: ${email} (${city}) to ${backupPath}`);
     return true;
   } catch (err) {
     console.error("Failed to write local backup:", err);

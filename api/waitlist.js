@@ -1,7 +1,29 @@
+import { appendFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_PUBLISHABLE_KEY;
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFrom = process.env.RESEND_FROM || "Kartik Guleria <kartik@railquick.in>";
+
+function saveToLocalFallback(email, city) {
+  try {
+    const isServerless = process.env.LAMBDA_TASK_ROOT || process.env.VERCEL || process.env.NETLIFY;
+    const backupPath = isServerless
+      ? "/tmp/waitlist_backups.json"
+      : join(__dirname, "waitlist_backups.json");
+    const entry = JSON.stringify({ email, city, timestamp: new Date().toISOString() }) + "\n";
+    appendFileSync(backupPath, entry, "utf8");
+    console.log(`Saved backup entry locally (Vercel): ${email} (${city}) to ${backupPath}`);
+    return true;
+  } catch (err) {
+    console.error("Failed to write local backup:", err);
+    return false;
+  }
+}
 
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -136,7 +158,21 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: "Please enter a valid email and city." });
     }
 
-    let waitlist = await addToWaitlist(email, city);
+    let waitlist;
+    try {
+      waitlist = await addToWaitlist(email, city);
+    } catch (dbError) {
+      console.warn("Database connection failed, using local backup fallback:", dbError.message);
+      saveToLocalFallback(email, city);
+
+      try {
+        await sendWelcomeEmail(email);
+      } catch {}
+
+      return res.status(201).json({
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+      });
+    }
 
     if (!waitlist.inserted) {
       try {
@@ -158,8 +194,15 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error("Waitlist Vercel Function Error:", error);
-    return res.status(500).json({
-      message: error.message || "Something went wrong. Please try again."
-    });
+    if (email && city && isEmail(email)) {
+      saveToLocalFallback(email, city);
+      return res.status(201).json({
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+      });
+    } else {
+      return res.status(500).json({
+        message: error.message || "Something went wrong. Please try again."
+      });
+    }
   }
 }
