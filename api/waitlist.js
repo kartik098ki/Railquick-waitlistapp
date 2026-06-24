@@ -165,58 +165,39 @@ export default async function handler(req, res) {
       console.warn("Database connection failed, using local backup fallback:", dbError.message);
       saveToLocalFallback(email, city);
 
-      let emailErr = null;
       try {
         await sendWelcomeEmail(email);
-      } catch (e) {
-        emailErr = e.message;
-      }
+      } catch {}
 
       return res.status(201).json({
-        message: "Fallback triggered",
-        error: dbError.message,
-        emailError: emailErr,
-        hasSupabaseUrl: !!supabaseUrl,
-        hasSupabaseAnonKey: !!supabaseAnonKey,
-        hasResendKey: !!resendApiKey
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
       });
     }
 
     if (!waitlist.inserted) {
-      let emailErr = null;
       try {
         await sendWelcomeEmail(email);
-      } catch (e) {
-        emailErr = e.message;
-      }
+      } catch {}
       return res.status(200).json({
-        message: "You are already on the RailQuick waitlist. We sent another welcome email!",
-        emailError: emailErr
+        message: "You are already on the RailQuick waitlist. We sent another welcome email!"
       });
     }
 
-    let emailErr = null;
     try {
       await sendWelcomeEmail(email);
     } catch (emailError) {
       console.warn("Welcome email failed to send:", emailError.message);
-      emailErr = emailError.message;
     }
 
     return res.status(201).json({
-      message: "You are on the RailQuick waitlist. Please check your email for the welcome note.",
-      emailError: emailErr
+      message: "You are on the RailQuick waitlist. Please check your email for the welcome note."
     });
   } catch (error) {
     console.error("Waitlist Vercel Function Error:", error);
     if (email && city && isEmail(email)) {
       saveToLocalFallback(email, city);
       return res.status(201).json({
-        message: "Generic Fallback triggered",
-        error: error.message,
-        hasSupabaseUrl: !!supabaseUrl,
-        hasSupabaseAnonKey: !!supabaseAnonKey,
-        hasResendKey: !!resendApiKey
+        message: "You are on the RailQuick waitlist. We will notify you at launch!"
       });
     } else {
       return res.status(500).json({
