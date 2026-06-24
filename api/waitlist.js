@@ -165,39 +165,58 @@ export default async function handler(req, res) {
       console.warn("Database connection failed, using local backup fallback:", dbError.message);
       saveToLocalFallback(email, city);
 
+      let emailErr = null;
       try {
         await sendWelcomeEmail(email);
-      } catch {}
+      } catch (e) {
+        emailErr = e.message;
+      }
 
       return res.status(201).json({
-        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+        message: "Fallback triggered",
+        error: dbError.message,
+        emailError: emailErr,
+        hasSupabaseUrl: !!supabaseUrl,
+        hasSupabaseAnonKey: !!supabaseAnonKey,
+        hasResendKey: !!resendApiKey
       });
     }
 
     if (!waitlist.inserted) {
+      let emailErr = null;
       try {
         await sendWelcomeEmail(email);
-      } catch {}
+      } catch (e) {
+        emailErr = e.message;
+      }
       return res.status(200).json({
-        message: "You are already on the RailQuick waitlist. We sent another welcome email!"
+        message: "You are already on the RailQuick waitlist. We sent another welcome email!",
+        emailError: emailErr
       });
     }
 
+    let emailErr = null;
     try {
       await sendWelcomeEmail(email);
     } catch (emailError) {
       console.warn("Welcome email failed to send:", emailError.message);
+      emailErr = emailError.message;
     }
 
     return res.status(201).json({
-      message: "You are on the RailQuick waitlist. Please check your email for the welcome note."
+      message: "You are on the RailQuick waitlist. Please check your email for the welcome note.",
+      emailError: emailErr
     });
   } catch (error) {
     console.error("Waitlist Vercel Function Error:", error);
     if (email && city && isEmail(email)) {
       saveToLocalFallback(email, city);
       return res.status(201).json({
-        message: "You are on the RailQuick waitlist. We will notify you at launch!"
+        message: "Generic Fallback triggered",
+        error: error.message,
+        hasSupabaseUrl: !!supabaseUrl,
+        hasSupabaseAnonKey: !!supabaseAnonKey,
+        hasResendKey: !!resendApiKey
       });
     } else {
       return res.status(500).json({
