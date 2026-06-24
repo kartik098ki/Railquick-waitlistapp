@@ -1,25 +1,17 @@
 {
-  "cleanUrls": false,
-  "routes": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/terms",
+      "destination": "/terms.html"
     },
     {
-      "src": "/terms",
-      "dest": "/public/terms.html"
+      "source": "/privacy",
+      "destination": "/privacy.html"
     },
     {
-      "src": "/privacy",
-      "dest": "/public/privacy.html"
-    },
-    {
-      "src": "/disclaimer",
-      "dest": "/public/disclaimer.html"
-    },
-    {
-      "src": "/(?!public/|api/)(.*)",
-      "dest": "/public/$1"
+      "source": "/disclaimer",
+      "destination": "/disclaimer.html"
     }
   ]
 }
