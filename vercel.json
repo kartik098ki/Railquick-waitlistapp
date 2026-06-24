@@ -18,7 +18,7 @@
       "dest": "/public/disclaimer.html"
     },
     {
-      "src": "/(.*)",
+      "src": "/(?!public/|api/)(.*)",
       "dest": "/public/$1"
     }
   ]
