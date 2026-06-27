@@ -1076,3 +1076,332 @@ input:focus { border-color: var(--g); background: #fff; box-shadow: 0 0 0 3.5px 
   }
 }
 
+/* ── Centered Coming Soon Styling ── */
+.cs-hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: clamp(60px, 12vh, 120px) 24px clamp(50px, 8vh, 80px);
+  min-height: 75vh;
+}
+
+.cs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: rise 0.75s var(--ease) both;
+}
+
+/* Glowing Pill Badge */
+.cs-badge-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--g-lt);
+  border: 1.5px solid var(--g-mid);
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--g-dk);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  box-shadow: 0 4px 12px var(--g-glo);
+}
+
+.cs-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--g);
+  border-radius: 50%;
+}
+
+.cs-badge-ping {
+  position: absolute;
+  left: 14px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--g);
+  border-radius: 50%;
+  animation: cs-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.75;
+}
+
+@keyframes cs-ping {
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Headline & Typography */
+.cs-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cs-title-em {
+  font-style: italic;
+  color: var(--g);
+}
+
+.cs-subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: var(--ink2);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0;
+}
+
+/* Status Glassmorphic Card */
+.cs-status-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.02),
+    0 12px 36px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-status-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cs-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.cs-status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cs-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #eab308;
+  border-radius: 50%;
+  animation: cs-pulse 1.8s infinite;
+}
+
+@keyframes cs-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(234, 179, 8, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); }
+}
+
+.cs-status-val {
+  font-weight: 800;
+  color: var(--g-dk);
+  background: var(--g-lt);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--g-mid);
+  font-size: 0.75rem;
+}
+
+.cs-progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.cs-progress-bar {
+  width: 85%;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--g), #4ade80);
+  animation: cs-fill 2s var(--ease) forwards;
+}
+
+@keyframes cs-fill {
+  from { width: 0%; }
+  to { width: 85%; }
+}
+
+.cs-stats-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.cs-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.cs-stat-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+.cs-stat-desc {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+.cs-stat-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+}
+
+/* Actions & Buttons */
+.cs-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cs-btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 28px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  transition: transform 200ms var(--ease), background 180ms, box-shadow 180ms;
+}
+
+.cs-btn-main:hover {
+  background: var(--ink2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+}
+
+.cs-btn-main:active {
+  transform: translateY(0);
+}
+
+.cs-btn-main .arr-out {
+  transition: transform 180ms var(--ease);
+}
+
+.cs-btn-main:hover .arr-out {
+  transform: translate(1.5px, -1.5px);
+}
+
+.cs-btn-alt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 26px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  color: var(--ink2);
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: border-color 180ms, color 180ms, background-color 180ms, transform 200ms var(--ease);
+}
+
+.cs-btn-alt:hover {
+  border-color: var(--g-mid);
+  color: var(--g-dk);
+  background-color: var(--g-lt);
+  transform: translateY(-2px);
+}
+
+.cs-btn-alt:active {
+  transform: translateY(0);
+}
+
+.cs-badge-soon {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #fef08a;
+  border: 1px solid #facc15;
+  color: #713f12;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 2px;
+}
+
+/* Animations */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .cs-hero-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .cs-btn-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cs-btn-main, .cs-btn-alt {
+    width: 100%;
+    max-width: 320px;
+  }
+  .cs-status-card {
+    padding: 20px 16px;
+  }
+  .cs-stat-num {
+    font-size: 1.15rem;
+  }
+}
+
+
