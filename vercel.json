@@ -34,11 +34,23 @@
       "destination": "/refund.html"
     },
     {
+      "source": "/cancellation-and-refund-policy",
+      "destination": "/refund.html"
+    },
+    {
+      "source": "/shipping",
+      "destination": "/shipping-delivery.html"
+    },
+    {
       "source": "/shipping-delivery",
       "destination": "/shipping-delivery.html"
     },
     {
       "source": "/shipping-policy",
+      "destination": "/shipping-delivery.html"
+    },
+    {
+      "source": "/shipping-and-delivery-policy",
       "destination": "/shipping-delivery.html"
     },
     {

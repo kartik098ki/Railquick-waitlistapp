@@ -1,0 +1,17 @@
+/api/waitlist   /.netlify/functions/waitlist   200
+/terms   /terms.html   200
+/terms-and-conditions   /terms.html   200
+/privacy   /privacy.html   200
+/privacy-policy   /privacy.html   200
+/refund   /refund.html   200
+/refund-policy   /refund.html   200
+/cancellation-refund   /refund.html   200
+/cancellation-and-refund-policy   /refund.html   200
+/shipping   /shipping-delivery.html   200
+/shipping-delivery   /shipping-delivery.html   200
+/shipping-policy   /shipping-delivery.html   200
+/shipping-and-delivery-policy   /shipping-delivery.html   200
+/delivery   /shipping-delivery.html   200
+/contact   /contact.html   200
+/contact-us   /contact.html   200
+/disclaimer   /disclaimer.html   200

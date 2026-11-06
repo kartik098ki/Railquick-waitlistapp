@@ -276,8 +276,8 @@ async function serveStatic(request, response) {
   let pathname = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
   if (pathname === "/privacy-policy") pathname = "/privacy.html";
   if (pathname === "/terms-and-conditions") pathname = "/terms.html";
-  if (pathname === "/refund-policy" || pathname === "/cancellation-refund") pathname = "/refund.html";
-  if (pathname === "/shipping-policy" || pathname === "/delivery") pathname = "/shipping-delivery.html";
+  if (pathname === "/refund-policy" || pathname === "/cancellation-refund" || pathname === "/cancellation-and-refund-policy") pathname = "/refund.html";
+  if (pathname === "/shipping-policy" || pathname === "/shipping-delivery" || pathname === "/shipping-and-delivery-policy" || pathname === "/shipping" || pathname === "/delivery") pathname = "/shipping-delivery.html";
   if (pathname === "/contact-us") pathname = "/contact.html";
 
   let safePath = normalize(pathname).replace(/^(\.\.[/\\])+/, "");
