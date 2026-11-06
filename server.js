@@ -273,9 +273,15 @@ async function handleWaitlist(request, response) {
 
 async function serveStatic(request, response) {
   const requestUrl = new URL(request.url, `http://${request.headers.host}`);
-  const pathname = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
-  const safePath = normalize(pathname).replace(/^(\.\.[/\\])+/, "");
-  const filePath = join(publicDir, safePath);
+  let pathname = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
+  if (pathname === "/privacy-policy") pathname = "/privacy.html";
+  if (pathname === "/terms-and-conditions") pathname = "/terms.html";
+  if (pathname === "/refund-policy" || pathname === "/cancellation-refund") pathname = "/refund.html";
+  if (pathname === "/shipping-policy" || pathname === "/delivery") pathname = "/shipping-delivery.html";
+  if (pathname === "/contact-us") pathname = "/contact.html";
+
+  let safePath = normalize(pathname).replace(/^(\.\.[/\\])+/, "");
+  let filePath = join(publicDir, safePath);
 
   if (!filePath.startsWith(publicDir)) {
     response.writeHead(403);
@@ -284,7 +290,17 @@ async function serveStatic(request, response) {
   }
 
   try {
-    const file = await readFile(filePath);
+    let file;
+    try {
+      file = await readFile(filePath);
+    } catch {
+      if (!extname(filePath)) {
+        filePath = filePath + ".html";
+        file = await readFile(filePath);
+      } else {
+        throw new Error("File not found");
+      }
+    }
     response.writeHead(200, {
       "Content-Type": contentTypes[extname(filePath)] || "application/octet-stream"
     });

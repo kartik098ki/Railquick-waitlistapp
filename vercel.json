@@ -10,8 +10,48 @@
       "destination": "/terms.html"
     },
     {
+      "source": "/terms-and-conditions",
+      "destination": "/terms.html"
+    },
+    {
       "source": "/privacy",
       "destination": "/privacy.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/refund",
+      "destination": "/refund.html"
+    },
+    {
+      "source": "/refund-policy",
+      "destination": "/refund.html"
+    },
+    {
+      "source": "/cancellation-refund",
+      "destination": "/refund.html"
+    },
+    {
+      "source": "/shipping-delivery",
+      "destination": "/shipping-delivery.html"
+    },
+    {
+      "source": "/shipping-policy",
+      "destination": "/shipping-delivery.html"
+    },
+    {
+      "source": "/delivery",
+      "destination": "/shipping-delivery.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact.html"
     },
     {
       "source": "/disclaimer",
